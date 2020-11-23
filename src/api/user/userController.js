@@ -56,5 +56,5 @@ const deleteUser = (req, res, next) => {
 }
 
 module.exports = {
-    findUser, addNewUser, fetchUsers, deleteUsers
+    findUser, addNewUser, fetchUsers, deleteUser
 };
