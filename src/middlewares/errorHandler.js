@@ -9,11 +9,9 @@ const UNPROCESSABLE_ENTITY = 422; //
 const INTERNAL_SERVER_ERROR = 500; //
 const FORBIDDEN = 403; //
 const errorType = require('../constants/constants').ERROR_TYPES;
-// const logger = require('../logs/logger')('/middlewares/errorHandler');
 
 exports.errorHandler = (err, req, res, next) => {
 
-    // logger.info('Into the Middlewares: ErrorHandler()');
 
     let setError = true
     if (err.name == errorType.BAD_REQUEST) {

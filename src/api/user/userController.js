@@ -1,17 +1,17 @@
 const userService = require('./userService');
 const ValidationSchema = require('./userValidation'); 
 const Joi = require('joi');
-
-
+const responseEnvelope = require('../../middlewares/responseEnvelope');
+const sendError = require('../../middlewares/errorHandler');
 const addNewUser = async (req, res, next) => {
 
     try {
         await Joi.validate(req.body, ValidationSchema.userValidation, { abortEarly: false });
         let response = await userService.addNewUser(req.body);
-        res.send(response);
+        responseEnvelope.created(response,req,res);
     
-    } catch (e) {
-        res.send(e)
+    } catch (err) {
+        sendError.errorHandler(err, req, res, next);
     }
 }
 
@@ -19,12 +19,11 @@ const addNewUser = async (req, res, next) => {
 const findUser = async (req, res, next) => {
 
     try {
-        console.log(231)
         await Joi.validate(req.params, ValidationSchema.userIdValidation, { abortEarly: false });
         let response = await userService.findUser(req.params);
-        res.send(response);
-    } catch (e) {
-        res.send(e)
+        responseEnvelope.success(response,req,res);
+    } catch (err) {
+        sendError.errorHandler(err, req, res, next);    
     }
 
 }
@@ -33,10 +32,9 @@ const fetchUsers = async (req, res, next) => {
 
     try {
         let response = await userService.fetchUsers();
-        res.send(response);
-
-    } catch (e) {
-        console.log(e)
+        responseEnvelope.success(response,req,res);
+    } catch (err) {
+        sendError.errorHandler(err, req, res, next);
     }
 
 }
@@ -47,9 +45,9 @@ const deleteUser = async (req, res, next) => {
     try {
         await Joi.validate(req.params, ValidationSchema.userIdValidation, { abortEarly: false });
         let response = await userService.deleteUser(req.params);
-        res.send(response);   
-    } catch (e) {
-    
+        responseEnvelope.noContent(response,req,res);
+    } catch (err) {
+        sendError.errorHandler(err, req, res, next);    
     }
 
 }

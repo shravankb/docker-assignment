@@ -4,7 +4,6 @@ const morgan = require('morgan');
 const userRoute = require('../src/api/user/user-route');
 const dbConnect = require('../src/databaseConfig/initiateDB');
 
-
 async function initiateServer () {
 
     let app = express();
@@ -20,11 +19,10 @@ async function initiateServer () {
     app.use(bodyParser.json());
 
     app.use('/api/user',userRoute);
-        
+    
     app.listen(process.env.PORT,()=>{
         console.log('Server Initiated!');
-    })
-
+    });
 
 }
 

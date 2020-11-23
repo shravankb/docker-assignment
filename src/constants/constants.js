@@ -1,24 +1,3 @@
-//!------------------------------EVENT TYPES--------------------------------
-
-const EVENT_TYPE_VALUES={
-    EMPLOYEE_ENGAGEMENT:1,
-    PARTICIPATE_BASED:2,
-    INVITE_BASED:3
-}
-
-const EVENT_TYPES = {
-    TYPE1:"EMPLOYEE_ENGAGEMENT",
-    TYPE2:"PARTICIPATE_BASED",
-    TYPE3:"INVITE_BASED"
-}
-
-//!---------------------------------PARTICIPANT INVITE STATUS---------------
-const INVITES_STATUS = {
-    MASK : 0,
-    YES : 1,
-    NO : 2,
-    MAYBE : 3
-}
 
 //!---------------------------------STATUS CODES----------------------------
 
@@ -73,8 +52,6 @@ const ERROR_MESSAGES = {
 
 module.exports={
     
-    EVENT_TYPES, EVENT_TYPE_VALUES, INVITES_STATUS,
-
     STATUS_CODES,
     
     ERROR_MESSAGES,
