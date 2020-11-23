@@ -17,7 +17,7 @@ const addNewUser = async (req, res, next) => {
 }
 
 
-const findUser = (req, res, next) => {
+const findUser = async (req, res, next) => {
 
     try {
         await Joi.validate(req.params, ValidationSchema.userIdValidation, { abortEarly: false });
@@ -29,7 +29,7 @@ const findUser = (req, res, next) => {
 
 }
 
-const fetchUsers = (req, res, next) => {
+const fetchUsers = async (req, res, next) => {
 
     try {
     
@@ -43,7 +43,7 @@ const fetchUsers = (req, res, next) => {
 }
 
 
-const deleteUser = (req, res, next) => {
+const deleteUser = async (req, res, next) => {
 
     try {
         await Joi.validate(req.params, ValidationSchema.userIdValidation, { abortEarly: false });

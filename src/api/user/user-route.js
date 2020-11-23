@@ -5,7 +5,7 @@ router.post('/', userController.addNewUser);
 
 router.get('/:userId', userController.findUser);
 
-router.get('/', userController.fetchUsers);
+router.get('/fetchAll', userController.fetchUsers);
 
 router.delete('/:userId', userController.deleteUser);
 

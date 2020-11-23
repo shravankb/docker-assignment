@@ -12,7 +12,7 @@ const addNewUser = async (body) => {
 }
 
 
-const findUser = (paramBody) => {
+const findUser = async (paramBody) => {
 
     try {
 
@@ -29,11 +29,11 @@ const findUser = (paramBody) => {
 
 }
 
-const fetchUsers = () => {
+const fetchUsers = async () => {
 
     try {
         
-        return await userDAL.getAllUsers();
+        return await userDAL.getAllUsers({ isArchived:false },{});
         
     } catch (e) {
         throw e;
@@ -42,11 +42,11 @@ const fetchUsers = () => {
 }
 
 
-const deleteUser = (paramBody) => {
+const deleteUser = async (paramBody) => {
 
     try {
         
-        return deleteUser = await userDAL.deleteUserById({_id:paramBody}); 
+        return deleteUser = await userDAL.deleteUserById({_id:paramBody}, { isArchived: true }); 
         
     } catch (e) {
         throw e;
