@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser =require('body-parser');
 const morgan = require('morgan');
+const userRoute = require('../src/api/user/user-route');
 
 function initiateServer () {
 
@@ -12,9 +13,10 @@ function initiateServer () {
     // parse application/json
     app.use(bodyParser.json());
 
-
-
-    app.listen(3030,()=>{
+    app.use('/api/user',userRoute);
+    console.log(process.env.PORT)
+    
+    app.listen(process.env.PORT,()=>{
         console.log('Server Initiated!');
     })
 
