@@ -5,6 +5,7 @@ const userDAL = require('./userDAL');
 const addNewUser = async (body) => {
 
     try {
+        body.isArchived = false;
         return await userDAL.createUser(body);
     } catch (e) {
         throw e;
@@ -16,10 +17,13 @@ const findUser = async (paramBody) => {
 
     try {
 
-        let user = await userDAL.findById( {_id:paramBody} );
+        let user = await userDAL.findById( {_id:paramBody.userId} );
+        
         if(!user){
             throw new Error('User Not Found');
         }
+        
+        return user;
 
     } catch (e) {
 
@@ -46,7 +50,7 @@ const deleteUser = async (paramBody) => {
 
     try {
         
-        return deleteUser = await userDAL.deleteUserById({_id:paramBody}, { isArchived: true }); 
+        return await userDAL.deleteUserById({_id:paramBody.userId}, { isArchived: true }); 
         
     } catch (e) {
         throw e;

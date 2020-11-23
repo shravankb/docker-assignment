@@ -3,9 +3,9 @@ const userController = require('./userController');
 
 router.post('/', userController.addNewUser);
 
-router.get('/:userId', userController.findUser);
-
 router.get('/fetchAll', userController.fetchUsers);
+
+router.get('/:userId', userController.findUser);
 
 router.delete('/:userId', userController.deleteUser);
 
