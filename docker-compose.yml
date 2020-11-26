@@ -6,7 +6,7 @@ services:
   ports: 
    - "27010:27017"
   volumes:
-   - ./mongodata:/data/db
+   - database-mongodata:/data/db
   restart: always
     
  nodeapp:
@@ -15,8 +15,12 @@ services:
     context: .
     dockerfile: Dockerfile
   ports:
-   - "8000:8000"
+   - "${PORT}:8000"
   depends_on: 
     - mongodatabase
+  env_file: 
+    - .env.dev
+  links:
+   - mongodatabase
 volumes:
-  mongodata:
+   database-mongodata:

@@ -1,18 +1,24 @@
-FROM node:12.15.0
+#First Stage
+FROM node:12 AS stage1
 
+WORKDIR /app
 
-# to create working app directory
-WORKDIR /usr/src/app
-
-# copy package.json and package-lock,json file
 COPY package*.json ./
 
 RUN npm install
 
-# Copy app source code
-COPY . .
+COPY src src
 
-EXPOSE 8000
+COPY server.js server.js
 
-CMD [ "npm", "run", "prod" ]
 
+#Second Stage
+FROM gcr.io/distroless/nodejs as built-image
+
+COPY --from=stage1 /app /app
+
+WORKDIR /app
+
+EXPOSE 8080
+
+CMD ["server.js"]
