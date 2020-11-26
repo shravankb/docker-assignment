@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "NODE_ENV=DEVELOPMENT nodemon server.js"
+    "dev": "nodemon -r dotenv/config server.js  dotenv_config_path=.env.dev",
+    "prod": "node -r dotenv/config server.js dotenv_config_path=.env"
   },
   "author": "Shravan Kumar B",
   "license": "ISC",

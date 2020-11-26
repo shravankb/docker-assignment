@@ -1,0 +1,22 @@
+version: "2"
+services: 
+ mongodatabase:
+  image: "mongo"
+  container_name: "mongo_db_usermgmt"
+  ports: 
+   - "27010:27017"
+  volumes:
+   - ./mongodata:/data/db
+  restart: always
+    
+ nodeapp:
+  container_name: "node_app_usermgmt"
+  build: 
+    context: .
+    dockerfile: Dockerfile
+  ports:
+   - "8000:8000"
+  depends_on: 
+    - mongodatabase
+volumes:
+  mongodata:
