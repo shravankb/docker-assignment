@@ -20,7 +20,7 @@ COPY server.js server.js
 
 CMD ["nodemon"]
 
-RUN npm prune --production  && npm clean cache --force
+RUN npm prune --production
 
 # Third Stage : Production
 FROM gcr.io/distroless/nodejs as release
