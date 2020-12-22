@@ -1,6 +1,7 @@
 #docker
 mongodata
 
+.env.*
 # Logs
 logs
 *.log

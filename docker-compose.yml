@@ -23,7 +23,7 @@ services:
   depends_on: 
     - mongodatabase
   env_file: 
-    - .env.dev
+    - .env.production
   links:
    - mongodatabase
 volumes:

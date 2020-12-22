@@ -1,0 +1,6 @@
+version: "2"
+services:     
+ nodeapp:
+  ports:
+   - "4040:8000"
+  

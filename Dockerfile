@@ -1,7 +1,13 @@
 # First Stage : BASE
 FROM node:12-alpine AS base
 
-LABEL maintained="Shravan K B shravan.kumar@nineleaps.com"
+LABEL maintainer="Shravan Kumar B, shravan.kumar@nineleaps.com"
+
+LABEL name="UserMgmtSystem"
+
+LABEL description="Image of User Mgmt System built in Node-MongoDB"
+
+LABEL BUILD_DATE = "28-NOV-2020"
 
 WORKDIR /app
 

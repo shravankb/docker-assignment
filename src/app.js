@@ -21,7 +21,7 @@ async function initiateServer () {
     app.use('/api/user',userRoute);
     
     app.listen(process.env.PORT,()=>{
-        console.log('Server Initiated!');
+        console.log('Server Initiated!', process.env.PORT);
     });
 
 }
