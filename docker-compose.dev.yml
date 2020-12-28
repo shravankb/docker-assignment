@@ -4,7 +4,9 @@ services:
   # build: 
     # context: .
     # dockerfile: Dockerfile
-  image: server-develop:latest
+  image: node-dev-app:latest
+  volumes: 
+   - ./:/app
   ports:
    - "4040:8000"
   

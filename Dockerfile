@@ -9,7 +9,6 @@ LABEL description="Image of User Mgmt System built in Node-MongoDB"
 
 LABEL BUILD_DATE = "28-NOV-2020"
 
-
 WORKDIR /app
 
 # Second Stage : Development
@@ -25,12 +24,14 @@ COPY src src
 
 COPY server.js server.js
 
-CMD ["nodemon"]
+CMD ["npm", "run", "dev"]
 
 RUN npm prune --production
 
 # Third Stage : Production
 FROM gcr.io/distroless/nodejs as release
+
+USER node
 
 COPY --from=development /app /app
 
