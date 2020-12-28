@@ -1,6 +1,10 @@
 version: "2"
 services:     
  nodeapp:
+  # build: 
+    # context: .
+    # dockerfile: Dockerfile
+  image: server-develop:latest
   ports:
    - "4040:8000"
   

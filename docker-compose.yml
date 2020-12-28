@@ -11,15 +11,13 @@ services:
     
  nodeapp:
   container_name: "node_app_usermgmt"
-  build: 
-    context: .
-    dockerfile: Dockerfile
+  # build: 
+    # context: .
+    # dockerfile: Dockerfile
   environment:
       - NODE_ENV=${NODE_ENV}
       - PORT=${PORT}
       - DBURL=${DBURL}
-  ports:
-   - "8000:8000"
   depends_on: 
     - mongodatabase
   env_file: 

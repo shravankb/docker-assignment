@@ -9,6 +9,7 @@ LABEL description="Image of User Mgmt System built in Node-MongoDB"
 
 LABEL BUILD_DATE = "28-NOV-2020"
 
+
 WORKDIR /app
 
 # Second Stage : Development
