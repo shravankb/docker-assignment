@@ -31,17 +31,8 @@ const getAllUsers = async (query, filter) => {
 
 }
 
-const deleteUserById = async (query, update) => {
-
-    try {
-        return await userModel.findByIdAndUpdate(query, update, { new: true });
-    } catch (e) {
-        throw e;
-    }
-
-}
 
 module.exports = {
-    deleteUserById,getAllUsers,findById,createUser
+    getAllUsers, findById, createUser
 }
 
