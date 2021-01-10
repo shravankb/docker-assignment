@@ -1,14 +1,6 @@
 # First Stage : BASE
 FROM node:12-alpine AS base
 
-LABEL maintainer="Shravan Kumar B, shravan.kumar@nineleaps.com"
-
-LABEL name="UserMgmtSystem"
-
-LABEL description="Image of User Mgmt System built in Node-MongoDB"
-
-LABEL BUILD_DATE = "28-NOV-2020"
-
 WORKDIR /app
 
 # Second Stage : Development
@@ -31,9 +23,17 @@ RUN npm prune --production
 # Third Stage : Production
 FROM gcr.io/distroless/nodejs as release
 
-USER node
+LABEL maintainer="Shravan Kumar B, shravan.kumar@nineleaps.com"
+
+LABEL name="UserMgmtSystem"
+
+LABEL description="Image of User Mgmt System built in Node-MongoDB"
+
+LABEL BUILD_DATE = "28-NOV-2020"
 
 COPY --from=development /app /app
+
+USER nobody
 
 WORKDIR /app
 

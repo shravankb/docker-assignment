@@ -7,6 +7,11 @@ services:
    - "27010:27017"
   volumes:
    - database-mongodata:/data/db
+  healthcheck:
+   test: echo 'db.stats().ok' | mongo ${DBURL} --quiet
+   interval: 5s
+   timeout: 5s
+   retries: 12
   restart: always
     
  nodeapp:
