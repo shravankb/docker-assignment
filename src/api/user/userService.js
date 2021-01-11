@@ -8,9 +8,9 @@ const addNewUser = async (body) => {
         body.isArchived = false;
         return await userDAL.createUser(body);
     } catch (e) {
-        if(e.name == "MongoError" && e.code == 11000)
-            throw new customError("Duplicated Value", "Email already exists. Email cannot be duplicated", 409, "CONFLICT" );
-        throw e;
+    
+        throw new customError("Duplicated Value", "Email already exists. Email cannot be duplicated", 409, "CONFLICT");
+
     }
 }
 
@@ -48,18 +48,7 @@ const fetchUsers = async () => {
 }
 
 
-const deleteUser = async (paramBody) => {
-
-    try {
-        
-        return await userDAL.deleteUserById({_id:paramBody.userId}, { isArchived: true });
-                
-    } catch (e) {
-        throw e;
-    }
-
-}
 
 module.exports = {
-    findUser, addNewUser, fetchUsers, deleteUser
+    findUser, addNewUser, fetchUsers
 };

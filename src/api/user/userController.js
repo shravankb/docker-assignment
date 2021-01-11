@@ -40,18 +40,6 @@ const fetchUsers = async (req, res, next) => {
 }
 
 
-const deleteUser = async (req, res, next) => {
-
-    try {
-        await Joi.validate(req.params, ValidationSchema.userIdValidation, { abortEarly: false });
-        let response = await userService.deleteUser(req.params);
-        responseEnvelope.noContent(response,req,res);
-    } catch (err) {
-        sendError.errorHandler(err, req, res, next);    
-    }
-
-}
-
 module.exports = {
-    findUser, addNewUser, fetchUsers, deleteUser
+    findUser, addNewUser, fetchUsers
 };

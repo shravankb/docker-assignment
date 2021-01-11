@@ -4,10 +4,11 @@
   "description": "User API for NL Docker Assignment",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --recursive -e .js test/",
     "start": "node server.js",
     "dev": "nodemon -r dotenv/config server.js  dotenv_config_path=.env.dev",
-    "prod": "node -r dotenv/config server.js dotenv_config_path=.env"
+    "prod": "node -r dotenv/config server.js dotenv_config_path=.env.production",
+    "coverage": "nyc --reporter=text-summary --reporter=html --reporter=lcov --reporter=text npm run test"
   },
   "author": "Shravan Kumar B",
   "license": "ISC",
@@ -18,5 +19,13 @@
     "joi": "^14.3.1",
     "mongoose": "^5.10.15",
     "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^8.2.1",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.3",
+    "sinon-chai": "^3.5.0"
   }
 }

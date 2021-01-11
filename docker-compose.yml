@@ -6,17 +6,28 @@ services:
   ports: 
    - "27010:27017"
   volumes:
-   - ./mongodata:/data/db
+   - database-mongodata:/data/db
+  healthcheck:
+   test: echo 'db.stats().ok' | mongo ${DBURL} --quiet
+   interval: 5s
+   timeout: 5s
+   retries: 12
   restart: always
     
  nodeapp:
   container_name: "node_app_usermgmt"
-  build: 
-    context: .
-    dockerfile: Dockerfile
-  ports:
-   - "8000:8000"
+  # build: 
+    # context: .
+    # dockerfile: Dockerfile
+  environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - DBURL=${DBURL}
   depends_on: 
     - mongodatabase
+  env_file: 
+    - .env.production
+  links:
+   - mongodatabase
 volumes:
-  mongodata:
+   database-mongodata:

@@ -2,3 +2,14 @@ node_modules
 npm-debug.log
 .env
 .env.dev
+.env.production
+.env.staging
+.git
+.gitignore
+docs
+coverage
+.vscode
+README.md
+LICENSE
+.editorconfig
+.vscode

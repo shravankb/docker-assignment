@@ -18,10 +18,14 @@ async function initiateServer () {
     // parse application/json
     app.use(bodyParser.json());
 
+    app.get('/health/check', (req,res)=> {
+        res.send({status:"up"});
+    });
+
     app.use('/api/user',userRoute);
     
     app.listen(process.env.PORT,()=>{
-        console.log('Server Initiated!');
+        console.log('Server Initiated!', process.env.PORT);
     });
 
 }

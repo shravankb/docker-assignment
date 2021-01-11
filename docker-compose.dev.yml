@@ -1,0 +1,12 @@
+version: "2"
+services:     
+ nodeapp:
+  # build: 
+    # context: .
+    # dockerfile: Dockerfile
+  image: node-dev-app:latest
+  volumes: 
+   - ./:/app
+  ports:
+   - "4040:8000"
+  
