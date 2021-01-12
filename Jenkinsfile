@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'node:12-alpine' }
+    agent any
 
     stages {
         stage('Hello') {
