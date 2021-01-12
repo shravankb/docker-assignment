@@ -2,16 +2,50 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Basic Setup') {
             steps {
-                echo 'Hello World'
+                echo 'Basic Setup and checks'
+                sh 'node --version'
+                sh 'npm --version'
+                
+                echo 'Install Project Dependencies'
+                sh 'npm i'
+
             }
         }
-        stage('Testing') {
+        stage('Unit Testing') {
             steps {
-                sh 'docker images --no-daemon'
+
+                echo 'UMS Testing-in-Progress'
+                sh 'npm test'
+            
             }
         }
-        
+
+        stage('SonarQube Scanner Analysis') {
+            environment {
+                scannerHome = tool 'sonar_scanner'
+            }
+
+            steps{
+                echo 'Check Testing'
+                
+                withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+                
+                timeout(time: 10, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
+        stage('Build'){
+
+            steps{
+                echo "Building Image"
+            }
+
+        }
     }
 }
