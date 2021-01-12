@@ -121,3 +121,6 @@ dist
 .pnp.*
 
 .vscode
+
+.scannerwork
+.nyc_output

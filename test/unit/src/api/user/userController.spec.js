@@ -270,7 +270,7 @@ describe('User Flow Controller Unit Tests', function() {
                 "message": "DATA_NOT_FOUND"
             };
 
-            stub(userService,'findUser').throws(error);
+            stub(userService,'fetchUsers').throws(error);
 
             expect(userController.fetchUsers(req, res, next)).to.be.eventually.rejected;
             expect(()=> userController.fetchUsers(req, res, next).to.throw()); 

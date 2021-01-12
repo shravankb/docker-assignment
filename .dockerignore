@@ -13,3 +13,5 @@ README.md
 LICENSE
 .editorconfig
 .vscode
+.scannerwork
+.nyc_output
