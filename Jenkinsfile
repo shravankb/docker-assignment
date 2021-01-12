@@ -26,10 +26,11 @@ pipeline {
             environment {
                 scannerHome = tool 'sonar_scanner'
             }
-
+            agent{ docker { image 'openjdk' }  }
+            
             steps{
                 echo 'Check Testing'
-                agent{ docker { image 'openjdk' }  }
+
                 withSonarQubeEnv('SonarQube') {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
