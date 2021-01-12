@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Testing') {
             steps {
-                sh 'docker images'
+                sh 'docker images --no-daemon'
             }
         }
         
