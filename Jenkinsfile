@@ -17,7 +17,7 @@ pipeline {
             steps {
 
                 echo 'UMS Testing-in-Progress'
-                sh 'npm test'
+                sh 'npm run coverage'
             
             }
         }
