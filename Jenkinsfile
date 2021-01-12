@@ -1,7 +1,6 @@
 pipeline {
-    agent { docker 'node:12-alpine' }
+    agent any
 
-    tools { nodejs "node"}
 
     stages {
         stage('Hello') {
