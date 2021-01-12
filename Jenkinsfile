@@ -26,8 +26,6 @@ pipeline {
             environment {
                 scannerHome = tool 'sonar_scanner'
             }
-
-            agent{ docker { image 'openjdk' }  }
             
             steps{
                 echo 'Check Testing'
