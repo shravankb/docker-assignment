@@ -26,6 +26,7 @@ pipeline {
             environment {
                 scannerHome = tool 'sonar_scanner'
             }
+
             agent{ docker { image 'openjdk' }  }
             
             steps{
@@ -35,9 +36,7 @@ pipeline {
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
                 
-                timeout(time: 10, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
+
             }
         }
 
