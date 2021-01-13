@@ -43,8 +43,15 @@ pipeline {
 
         stage('Build Docker Image'){
 
+
+
             steps{
                 echo "Building Image"
+
+                withEnv(["DATA=${NODE_ENV}"]){
+                        echo $DATA                    
+                }
+
                 sh "docker-compose --env-file=.env.production -f docker-compose.yml -f docker-compose.prod.yml build"
                 echo "Image built"
             }
