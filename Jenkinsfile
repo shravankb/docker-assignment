@@ -48,12 +48,14 @@ pipeline {
             steps{
                 echo "Building Image"
 
-                withEnv(["DATA=${NODE_ENV}"]){
-                        echo "$DATA"                    
+                withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}"]){
+                
+                echo "$DATA"
+
+                echo "Image built"                    
                 }
 
-                sh "docker-compose --env-file=.env.production -f docker-compose.yml -f docker-compose.prod.yml build"
-                echo "Image built"
+
             }
 
         }
