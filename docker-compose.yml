@@ -25,8 +25,8 @@ services:
       - DBURL=${DBURL}
   depends_on: 
     - mongodatabase
-  env_file: 
-    - .env.production
+  # env_file: 
+    # - .env.production
   links:
    - mongodatabase
 volumes:
