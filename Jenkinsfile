@@ -52,7 +52,7 @@ pipeline {
 
                 echo "Builing in process"
                 
-                sh "docker-compose  -e NODE_ENV=$NODE_ENV PORT=$PORT DBURL=$DBURI -f docker-compose.yml -f docker-compose.prod.yml build"
+                sh "NODE_ENV=$NODE_ENV PORT=$PORT DBURL=$DBURI docker-compose -f docker-compose.yml -f docker-compose.prod.yml build"
 
                 echo "Image built"                    
                 }
