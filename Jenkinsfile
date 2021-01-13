@@ -48,10 +48,11 @@ pipeline {
             steps{
                 echo "Building Image"
 
-                withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}"]){
+                withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}", "DBURI=${DBURL}"]){
+
+                echo "Builing in process"
                 
-                echo "$ENVIRONMENT"
-                echo "$PORT"
+                sh "docker-compose  -e NODE_ENV=$NODE_ENV PORT=$PORT DBURL=$DBURI -f docker-compose.yml -f docker-compose.prod.yml build"
 
                 echo "Image built"                    
                 }
