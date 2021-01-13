@@ -50,7 +50,8 @@ pipeline {
 
                 withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}"]){
                 
-                echo "$DATA"
+                echo "$ENVIRONMENT"
+                echo "$PORT"
 
                 echo "Image built"                    
                 }
