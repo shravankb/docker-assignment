@@ -41,6 +41,12 @@ pipeline {
             }
         }
 
+        environment {
+            registry = "pavithra1026/docker-test"
+            registryCredential = 'dockerhub'
+            dockerImage = ''
+        }
+
         stage('Build Docker Image'){
             agent { dockerfile true }
 
@@ -54,12 +60,16 @@ pipeline {
 
                 // }
 
+
                 echo "Builing in process"
                 echo "docker Check"
                 sh "docker --version"
                 echo "docker-compose Check"
                 sh "docker-compose --version"
-                sh "docker build -t ums-app -v /var/run/docker.sock:/var/run/docker.sock ."
+                // sh "docker build -t ums-app ."
+                script {
+                   dockerImage = docker.build registry + ":1.1"
+                }
                 echo "Image built"
             //  }
 
