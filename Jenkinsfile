@@ -41,15 +41,14 @@ pipeline {
             }
         }
 
-        environment {
+     
+
+        stage('Build Docker Image'){
+            environment {
             registry = "pavithra1026/docker-test"
             registryCredential = 'dockerhub'
             dockerImage = ''
-        }
-
-        stage('Build Docker Image'){
-            agent { dockerfile true }
-
+            }
             steps{
              
 
