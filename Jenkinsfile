@@ -52,6 +52,9 @@ pipeline {
 
                 echo "Builing in process"
                 
+                sh "docker --version"
+                sh "docker-compose --version"
+
                 echo "Image built"
                 }
 
