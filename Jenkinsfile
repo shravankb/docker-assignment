@@ -55,9 +55,7 @@ pipeline {
 
              echo "Building Image"
             //  container('docker') {
-                // withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}", "DBURI=${DBURL}"]){
-
-                // }
+                withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}", "DBURI=${DBURL}"]){
 
 
                 echo "Builing in process"
@@ -71,8 +69,8 @@ pipeline {
                 //    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 // }
                 echo "Image built"
-            //  }
-
+                }
+          //  }
             }
 
         }
