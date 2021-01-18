@@ -50,7 +50,7 @@ pipeline {
 
 
              echo "Building Image"
-             container('docker') {
+            //  container('docker') {
                 // withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}", "DBURI=${DBURL}"]){
 
                 // }
@@ -62,7 +62,7 @@ pipeline {
                 sh "docker-compose --version"
                 sh "docker build -t ums-app ."
                 echo "Image built"
-             }
+            //  }
 
             }
 
