@@ -40,14 +40,13 @@ pipeline {
 
             }
         }
-
-     
+// Todo: from here deployment part 
 
         stage('Build Docker Image'){
             environment {
-            registry = "shravankb/docker-test"
-            registryCredential = 'DockerHubCreds'
-            dockerImage = ''
+                registry = "shravankb/ums-app"
+                registryCredential = 'DockerHubCreds'
+                dockerImage = ''
             }
             steps{
              
@@ -60,8 +59,10 @@ pipeline {
                 sh "docker --version"
                 echo "docker-compose Check"
                 sh "docker-compose --version"
-                sh "docker build -t shravankb/ums-app ."
 
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
                 echo "Image built"
                 }
             }
@@ -70,16 +71,15 @@ pipeline {
 
         stage('Deploying Image to DockerHub'){
             environment {
-            registry = "shravankb/docker-test"
-            registryCredential = 'DockerHubCreds'
-            dockerImage = 'ums-app'
+                registry = "shravankb/docker-test"
+                registryCredential = 'DockerHubCreds'
+                dockerImage = 'ums-app:' + $BUILD_NUMBER
             }
             steps{
-                echo "Connecting to Docker-Registry"
-                sh "docker login -u ${DOCKER_UNAME} -p ${DOCKER_PWD}"
-                echo "Connected to Registry"
-                echo "Pushing the Image to Registry"
-                sh "docker push shravankb/ums-app"
+                
+                docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                }
 
             }
         }
