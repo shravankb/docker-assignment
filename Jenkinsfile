@@ -67,7 +67,7 @@ pipeline {
                 sh "docker-compose --version"
                 // sh "docker build -t ums-app ."
                 script {
-                   dockerImage = docker.build registry + ":1.1"
+                   dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 }
                 echo "Image built"
             //  }
