@@ -60,7 +60,7 @@ pipeline {
                 sh "docker --version"
                 echo "docker-compose Check"
                 sh "docker-compose --version"
-                sh "docker build -t shravan20/ums-app ."
+                sh "docker build -t shravankb/ums-app ."
 
                 echo "Image built"
                 }
@@ -79,7 +79,7 @@ pipeline {
                 sh "docker login -u ${DOCKER_UNAME} -p ${DOCKER_PWD}"
                 echo "Connected to Registry"
                 echo "Pushing the Image to Registry"
-                sh "docker push shravan20/ums-app"
+                sh "docker push shravankb/ums-app"
 
             }
         }
