@@ -47,9 +47,7 @@ pipeline {
 
             steps{
              
-             agent {
-                    docker { image 'node:14-alpine' }
-             }
+
 
              echo "Building Image"
              container('docker') {
