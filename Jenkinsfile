@@ -46,7 +46,12 @@ pipeline {
 
 
             steps{
-                echo "Building Image"
+             
+             agent {
+                    docker { image 'node:14-alpine' }
+             }
+
+             echo "Building Image"
              container('docker') {
                 withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}", "DBURI=${DBURL}"]){
 
