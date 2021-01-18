@@ -76,8 +76,10 @@ pipeline {
             }
             steps{
                 echo "Connecting to Docker-Registry"
-                sh "docker login -u ${DOCKER_UNAME} --password-stdin ${DOCKER_PWD}"
+                sh "docker login -u ${DOCKER_UNAME} -p ${DOCKER_PWD}"
                 echo "Connected to Registry"
+                echo "Pushing the Image to Registry"
+                sh "docker push shravan20/ums-app"
 
             }
         }
