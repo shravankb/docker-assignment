@@ -71,7 +71,7 @@ pipeline {
 
         stage('Deploying Image to DockerHub'){
             environment {
-                registry = "shravankb/docker-test"
+                registry = "shravankb/ums-app"
                 registryCredential = 'DockerHubCreds'
                 dockerImage = 'ums-app:' + $BUILD_NUMBER
             }
