@@ -84,6 +84,7 @@ pipeline {
 
         stage('Connect to Server'){
             sh 'ssh ec2'
+            sh 'ls'
         }
 
 
