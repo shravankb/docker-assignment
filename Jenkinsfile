@@ -45,14 +45,12 @@ pipeline {
 
         stage('Build Docker Image'){
             environment {
-            registry = "pavithra1026/docker-test"
-            registryCredential = 'dockerhub'
+            registry = "shravankb/docker-test"
+            registryCredential = 'DockerHubCreds'
             dockerImage = ''
             }
             steps{
              
-
-
              echo "Building Image"
 
                 withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}", "DBURI=${DBURL}"]){
@@ -69,6 +67,21 @@ pipeline {
             }
 
         }
+
+        stage('Deploying Image to DockerHub'){
+            environment {
+            registry = "shravankb/docker-test"
+            registryCredential = 'DockerHubCreds'
+            dockerImage = 'ums-app'
+            }
+            steps{
+                echo "Connecting to Docker-Registry"
+                sh "docker login -u ${DOCKER_UNAME} -p ${DOCKER_PWD}"
+                echo "Connected to Registry"
+
+            }
+        }
+
 
     }
 }
