@@ -57,7 +57,7 @@ pipeline {
                 echo "docker-compose Check"
                 sh "docker-compose --version"
 
-                sh "docker build . -t ums-app"
+                sh "sudo docker build . -t ums-app"
 
                 echo "Image built"
                 }
