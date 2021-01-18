@@ -47,7 +47,7 @@ pipeline {
 
             steps{
                 echo "Building Image"
-
+             container('docker') {
                 withEnv(["ENVIRONMENT=${NODE_ENV}", "PORT=${PORT}", "DBURI=${DBURL}"]){
 
                 echo "Builing in process"
@@ -61,7 +61,7 @@ pipeline {
 
                 echo "Image built"
                 }
-
+             }
 
             }
 
