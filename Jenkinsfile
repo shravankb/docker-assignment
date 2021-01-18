@@ -84,8 +84,11 @@ pipeline {
 // Todo: from here deployment part 
 
         stage('Connect to Server'){
+            steps{
+
             sh 'ssh ec2'
             sh 'ls'
+            }
         }
 
 
