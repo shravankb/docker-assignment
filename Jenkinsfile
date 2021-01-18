@@ -64,7 +64,8 @@ pipeline {
                 echo "docker-compose Check"
                 sh "docker-compose --version"
                 // sh "docker build -t ums-app ."
-                sh "docker-compose -e NODE_ENV=${ENVIRONMENT} PORT=${PORT} DBURL=${DBURI} -f docker-compose.yml -f docker-compose.prod.yml up --build"
+                sh "docker-compose -f docker-compose.yml -f docker-compose.prod.yml build"
+                sh "docker-compose -e NODE_ENV=${ENVIRONMENT} PORT=${PORT} DBURL=${DBURI} -f docker-compose.yml -f docker-compose.prod.yml up"
                 // script {
                 //    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                 // }
