@@ -73,7 +73,7 @@ pipeline {
             environment {
                 registry = "shravankb/ums-app"
                 registryCredential = 'DockerHubCreds'
-                dockerImage = 'ums-app:' + $BUILD_NUMBER
+                dockerImage = 'ums-app' + ":$BUILD_NUMBER"
             }
             steps{
                 
