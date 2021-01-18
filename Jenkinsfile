@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    environment {
+                registry = "shravankb/ums-app"
+                registryCredential = 'DockerHubCreds'
+                dockerImage = ''
+    }
+
     stages {
         stage('Basic Setup') {
             steps {
@@ -43,11 +49,7 @@ pipeline {
 // Todo: from here deployment part 
 
         stage('Build Docker Image'){
-            environment {
-                registry = "shravankb/ums-app"
-                registryCredential = 'DockerHubCreds'
-                dockerImage = ''
-            }
+            
             steps{
              
              echo "Building Image"
@@ -70,11 +72,7 @@ pipeline {
         }
 
         stage('Deploying Image to DockerHub'){
-            environment {
-                registry = "shravankb/ums-app"
-                registryCredential = 'DockerHubCreds'
-                dockerImage = 'ums-app' + ":$BUILD_NUMBER"
-            }
+            
             steps{
                 
                 docker.withRegistry( '', registryCredential ) {
