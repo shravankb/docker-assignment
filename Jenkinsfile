@@ -74,11 +74,11 @@ pipeline {
         stage('Deploying Image to DockerHub'){
             
             steps{
-                
-                docker.withRegistry( '', registryCredential ) {
-                    dockerImage.push()
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                    }
                 }
-
             }
         }
 
