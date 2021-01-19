@@ -88,7 +88,9 @@ pipeline {
 
             // sh 'ssh ec2'
             // sh 'ls'
+            echo "Connecting to Server"
             }
+
         }
 
 
