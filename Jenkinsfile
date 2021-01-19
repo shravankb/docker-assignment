@@ -48,7 +48,7 @@ pipeline {
         }
 // Todo: from here deployment part 
 
-     /*    stage('Build Docker Image'){
+        stage('Build Docker Image'){
             
             steps{
              
@@ -80,15 +80,12 @@ pipeline {
                     }
                 }
             }
-        } */
+        }
 // Todo: from here deployment part 
 
         stage('Connect to Server'){
             steps{
-
-            // sh 'ssh ec2'
-            // sh 'ls'
-            echo "Connecting to Server"
+                echo "Connecting to Server"
             }
 
         }
