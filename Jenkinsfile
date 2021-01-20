@@ -83,7 +83,7 @@ pipeline {
         }
 // Todo: from here deployment part 
 
-        stage('Connect to Server'){
+        stage('Connect to Server and Deploy to Server'){
             steps{
                 echo "Connecting to Server"
 
