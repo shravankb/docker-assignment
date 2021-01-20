@@ -87,8 +87,7 @@ pipeline {
             steps{
                 echo "Connecting to Server"
 
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'EC2-Instance', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd ~/docker-assignment
-docker stop $(docker ps -a -q)
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'EC2-Instance', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -a -q)
 docker-compose --env-file=.env.production -f docker-compose.yml -f docker-compose.prod.yml up -d
