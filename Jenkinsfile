@@ -86,6 +86,10 @@ pipeline {
         stage('Connect to Server'){
             steps{
                 echo "Connecting to Server"
+
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'EC2-Instance', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd ~/abc
+                mkdir omg''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+
             }
 
         }
