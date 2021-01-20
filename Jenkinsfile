@@ -87,14 +87,12 @@ pipeline {
             steps{
                 echo "Connecting to Server"
 
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'EC2-Instance', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd ~/abc 
-echo "$BUILD_NUMBER" >>abc.txt
-echo "$BUILD_NUMBER - 1" >>abc.txt
-cd ~/docker-assignment
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'EC2-Instance', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '''cd ~/docker-assignment
 docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -a -q)
-docker pull shravankb/ums-app:{BUILD_NUMBER}''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+docker pull shravankb/ums-app:$BUILD_NUMBER
+docker-compose --env-file=.env.production -f docker-compose.yml -f docker-compose.prod.yml up''', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'docker-compose.yml, docker-compose.prod.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 
             }
 
