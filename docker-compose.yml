@@ -19,6 +19,7 @@ services:
   # build: 
     # context: .
     # dockerfile: Dockerfile
+  image: shravankb/ums-app:latest
   environment:
       - NODE_ENV=${NODE_ENV}
       - PORT=${PORT}
